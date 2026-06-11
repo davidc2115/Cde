@@ -17,20 +17,31 @@ jobs:
       with:
         node-version: '18'
     
+    - name: Setup Java
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'adopt'
+    
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v2
+      with:
+        api-levels: '34'
+        build-tools-version: '34.0.0'
+    
     - name: Install dependencies
       run: npm install
     
-    - name: Create simple APK info
+    - name: Build APK
       run: |
-        echo "Build completed - APK ready for download"
-        echo "Project: CDE App"
-        echo "Version: 1.0.0"
-        mkdir -p build
-        echo "APK build placeholder" > build/app-release.apk
+        cd android
+        ./gradlew clean assembleRelease
+      env:
+        ANDROID_HOME: ${{ env.ANDROID_HOME }}
     
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
         name: app-release
-        path: build/app-release.apk
+        path: android/app/build/outputs/apk/release/
         retention-days: 30
