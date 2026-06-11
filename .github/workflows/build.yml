@@ -35,6 +35,7 @@ jobs:
     - name: Build APK
       run: |
         cd android
+        chmod +x ./gradlew
         ./gradlew clean assembleRelease
       env:
         ANDROID_HOME: ${{ env.ANDROID_HOME }}
