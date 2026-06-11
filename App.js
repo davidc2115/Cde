@@ -1,8 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { StatusBar } from 'expo-status-bar';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, StatusBar } from 'react-native';
 import GestionScreen from './src/screens/GestionScreen';
 
 const Tab = createBottomTabNavigator();
@@ -11,7 +10,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <View style={styles.container}>
-        <StatusBar style="auto" />
+        <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
         <Tab.Navigator
           screenOptions={{
             tabBarActiveTintColor: '#6366f1',
