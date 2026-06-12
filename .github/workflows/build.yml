@@ -50,7 +50,8 @@ jobs:
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: |
-  npx expo prebuild --platform android --clean
+          npx expo prebuild --platform android --clean
+
       - name: 📝 Configure Android Package Name
         run: |
           cd android/app
