@@ -16,6 +16,7 @@ jobs:
   build:
     name: Build APK avec Gradle Direct
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     
     steps:
       - name: 🔍 Checkout repository
@@ -83,7 +84,7 @@ jobs:
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew assembleRelease --no-daemon --stacktrace
+          ./gradlew assembleRelease --no-daemon --stacktrace --max-workers=1 --parallel=false
           
       - name: 📦 Find and rename APK
         run: |
