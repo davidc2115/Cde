@@ -17,21 +17,20 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '18'
-        cache: 'npm' # Active le cache pour accélérer les futurs builds
+        cache: 'npm' # Active le cache npm pour accélérer l'installation
 
     - name: Setup Java JDK
       uses: actions/setup-java@v4
       with:
-        distribution: 'zulu' # 'zulu' ou 'temurin' sont très stables
-        java-version: '17'   # Recommandé pour les versions récentes de React Native / Android
+        distribution: 'zulu'
+        java-version: '17' # Version recommandée pour Android / React Native récent
 
     - name: Install dependencies
       run: npm install
     
-    # Étape optionnelle : À activer SEULEMENT si tu es sur React Native (Expo Bare/CLI) 
-    # et que le dossier /android n'est pas poussé sur ton Git.
-    # - name: Generate Android folder (React Native Only)
-    #   run: npx react-native @expo/prebuild --platform android
+    # Génère proprement le dossier /android et le Gradle Wrapper
+    - name: Generate Android folder
+      run: npx expo prebuild --platform android
     
     - name: Cache Gradle Packages
       uses: actions/cache@v4
