@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "RoleplayChat",
+    "slug": "roleplay-chat",
+    "version": "1.0.0",
+    "assetBundlePatterns": ["**/*"],
+    "android": {
+      "package": "com.roleplaychat.app"
+    },
+    "plugins": []
+  }
+}
