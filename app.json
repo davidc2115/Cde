@@ -3,9 +3,14 @@
     "name": "RoleplayChat",
     "slug": "roleplay-chat",
     "version": "1.0.0",
+    "platforms": ["ios", "android"],
     "assetBundlePatterns": ["**/*"],
     "android": {
-      "package": "com.roleplaychat.app"
+      "package": "com.roleplaychat.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
     },
     "plugins": []
   }
