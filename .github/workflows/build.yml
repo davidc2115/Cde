@@ -17,39 +17,20 @@ jobs:
       with:
         node-version: '18'
     
-    - name: Setup Java
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'adopt'
-    
-    - name: Setup Android SDK
-      uses: android-actions/setup-android@v2
-      with:
-        api-levels: '34'
-        build-tools-version: '34.0.0'
-    
-    - name: Download Gradle Wrapper JAR
-      run: |
-        mkdir -p android/gradle/wrapper
-        cd android/gradle/wrapper
-        wget -q https://services.gradle.org/distributions/gradle-8.0-wrapper.jar -O gradle-wrapper.jar
-        cd ../../../
-    
     - name: Install dependencies
       run: npm install
     
-    - name: Build APK
-      run: |
-        cd android
-        chmod +x ./gradlew
-        ./gradlew clean assembleRelease
+    - name: Setup EAS
+      run: npm install -g eas-cli
+    
+    - name: Build APK with EAS
+      run: eas build --platform android --non-interactive
       env:
-        ANDROID_HOME: ${{ env.ANDROID_HOME }}
+        EAS_NO_VCS_DETECTION: 1
     
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
         name: app-release
-        path: android/app/build/outputs/apk/release/
+        path: ./app-release.apk
         retention-days: 30
