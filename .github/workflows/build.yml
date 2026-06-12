@@ -84,7 +84,7 @@ jobs:
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew assembleRelease --no-daemon --stacktrace --max-workers=1 --parallel=false
+          ./gradlew assembleRelease --no-daemon --stacktrace
           
       - name: 📦 Find and rename APK
         run: |
