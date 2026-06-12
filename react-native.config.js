@@ -2,7 +2,7 @@ module.exports = {
   project: {
     ios: {},
     android: {
-      packageName: 'com.roleplaychat.app',
+      packageName: 'com.cde.app',
     },
   },
   dependency: {
