@@ -29,6 +29,13 @@ jobs:
         api-levels: '34'
         build-tools-version: '34.0.0'
     
+    - name: Download Gradle Wrapper JAR
+      run: |
+        mkdir -p android/gradle/wrapper
+        cd android/gradle/wrapper
+        wget -q https://services.gradle.org/distributions/gradle-8.0-wrapper.jar -O gradle-wrapper.jar
+        cd ../../../
+    
     - name: Install dependencies
       run: npm install
     
