@@ -57,8 +57,9 @@ jobs:
           cd android/app
           # Ensure build.gradle has the correct package configuration
           sed -i 's/namespace ".*"/namespace "com.roleplaychat.app"/' build.gradle
+sed -i 's/applicationId ".*"/applicationId "com.roleplaychat.app"/' build.gradle
           echo "=== Android build.gradle ===" 
-          cat build.gradle | grep -A 5 "namespace\|packageName"
+          cat build.gradle | grep -E "namespace|applicationId|packageName"
 
       - name: 🔧 Ensure Gradle 8.14
         run: |
@@ -67,6 +68,7 @@ jobs:
 
       - name: 📝 Create keystore
         run: |
+        
           cd android/app
           keytool -genkeypair -v -storetype PKCS12 \
             -keystore release.keystore \
