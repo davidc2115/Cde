@@ -16,21 +16,17 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
-        cache: 'npm' # Active le cache npm pour accélérer l'installation
+        node-version: '20' # Passé à 20 pour corriger l'avertissement
+        cache: 'npm'
 
     - name: Setup Java JDK
       uses: actions/setup-java@v4
       with:
         distribution: 'zulu'
-        java-version: '17' # Version recommandée pour Android / React Native récent
+        java-version: '17'
 
     - name: Install dependencies
       run: npm install
-    
-    # Génère proprement le dossier /android et le Gradle Wrapper
-    - name: Generate Android folder
-      run: npx expo prebuild --platform android
     
     - name: Cache Gradle Packages
       uses: actions/cache@v4
