@@ -1,0 +1,60 @@
+{
+  "expo": {
+    "name": "B&G Chat",
+    "slug": "roleplay-chat-app",
+    "version": "5.3.76",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#6366f1"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "plugins": [
+      "./app.plugin.js",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "L'application a besoin d'accéder à votre galerie pour importer des images de personnages.",
+          "cameraPermission": "L'application a besoin d'accéder à votre caméra pour prendre des photos de personnages."
+        }
+      ]
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.roleplaychat.app",
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "L'application a besoin d'accéder à votre galerie pour importer des images de personnages.",
+        "NSCameraUsageDescription": "L'application a besoin d'accéder à votre caméra pour prendre des photos de personnages."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#6366f1"
+      },
+      "package": "com.roleplaychat.app",
+      "versionCode": 130,
+      "permissions": [
+        "android.permission.INTERNET",
+        "android.permission.CAMERA",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_MEDIA_IMAGES"
+      ],
+      "usesCleartextTraffic": true
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "99a2d247-e734-4dde-b0f7-926207ce2815"
+      }
+    }
+  }
+}

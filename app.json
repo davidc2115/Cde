@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#6366f1"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -21,16 +21,14 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#6366f1"
       },
       "package": "com.cde.app",
       "versionCode": 1,
       "permissions": [
         "android.permission.INTERNET"
       ],
-      "minSdkVersion": 24,
-      "jsEngine": "hermes",
-      "hermesEnabled": true
+      "usesCleartextTraffic": true
     },
     "web": {
       "favicon": "./assets/favicon.png"
