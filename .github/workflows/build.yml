@@ -36,7 +36,6 @@ jobs:
       - name: 🗑️ Clean everything
         run: |
           rm -rf node_modules
-          rm -rf android
           rm -rf ios
           rm -rf .expo
           npm cache clean --force
@@ -51,7 +50,7 @@ jobs:
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: |
-          npx expo prebuild --platform android --clean
+          npx expo prebuild --platform android
 
       - name: 📝 Configure Android Package Name
         run: |
