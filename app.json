@@ -27,7 +27,8 @@
       "versionCode": 1,
       "permissions": [
         "android.permission.INTERNET"
-      ]
+      ],
+      "minSdkVersion": 24
     },
     "web": {
       "favicon": "./assets/favicon.png"
