@@ -53,14 +53,16 @@ jobs:
         run: |
           npx expo prebuild --platform android --clean
 
-      - name: 📝 Configure Android Package Name
+      - name: 📝 Configure Android Package Name and minSdkVersion
         run: |
           cd android/app
           # Ensure build.gradle has the correct package configuration
           sed -i 's/namespace ".*"/namespace "com.cde.app"/' build.gradle
           sed -i 's/applicationId ".*"/applicationId "com.cde.app"/' build.gradle
+          # Fix minSdkVersion to 24 for React Native compatibility
+          sed -i 's/minSdkVersion .*/minSdkVersion 24/' build.gradle
           echo "=== Android build.gradle ===" 
-          cat build.gradle | grep -E "namespace|applicationId|packageName"
+          cat build.gradle | grep -E "namespace|applicationId|packageName|minSdkVersion"
           # Also update the package name in the manifest
           sed -i 's/package=".*"/package="com.cde.app"/' src/main/AndroidManifest.xml
 
