@@ -28,7 +28,9 @@
       "permissions": [
         "android.permission.INTERNET"
       ],
-      "minSdkVersion": 24
+      "minSdkVersion": 24,
+      "jsEngine": "hermes",
+      "hermesEnabled": true
     },
     "web": {
       "favicon": "./assets/favicon.png"

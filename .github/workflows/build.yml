@@ -61,10 +61,15 @@ jobs:
           sed -i 's/applicationId ".*"/applicationId "com.cde.app"/' build.gradle
           # Fix minSdkVersion to 24 for React Native compatibility
           sed -i 's/minSdkVersion .*/minSdkVersion 24/' build.gradle
+          # Also fix in the defaultConfig section
+          sed -i 's/minSdkVersion [0-9]*/minSdkVersion 24/g' build.gradle
           echo "=== Android build.gradle ===" 
           cat build.gradle | grep -E "namespace|applicationId|packageName|minSdkVersion"
           # Also update the package name in the manifest
           sed -i 's/package=".*"/package="com.cde.app"/' src/main/AndroidManifest.xml
+          # Fix minSdkVersion in gradle.properties
+          cd ../..
+          echo "MIN_SDK_VERSION=24" >> android/gradle.properties
 
       - name: 🔧 Ensure Gradle 8.14
         run: |
