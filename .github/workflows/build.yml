@@ -36,6 +36,7 @@ jobs:
       - name: 🗑️ Clean everything
         run: |
           rm -rf node_modules
+          rm -rf android
           rm -rf ios
           rm -rf .expo
           npm cache clean --force
@@ -50,7 +51,7 @@ jobs:
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: |
-          npx expo prebuild --platform android
+          npx expo prebuild --platform android --clean
 
       - name: 📝 Configure Android Package Name
         run: |
@@ -60,6 +61,8 @@ jobs:
           sed -i 's/applicationId ".*"/applicationId "com.cde.app"/' build.gradle
           echo "=== Android build.gradle ===" 
           cat build.gradle | grep -E "namespace|applicationId|packageName"
+          # Also update the package name in the manifest
+          sed -i 's/package=".*"/package="com.cde.app"/' src/main/AndroidManifest.xml
 
       - name: 🔧 Ensure Gradle 8.14
         run: |
@@ -83,7 +86,7 @@ jobs:
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew assembleRelease --no-daemon --stacktrace
+          ./gradlew assembleRelease --no-daemon --stacktrace -x generateAutolinkingPackageList
           
       - name: 📦 Find and rename APK
         run: |
