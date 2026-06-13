@@ -86,7 +86,7 @@ jobs:
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew assembleRelease --no-daemon --stacktrace -x generateAutolinkingPackageList
+          ./gradlew assembleRelease --no-daemon --stacktrace -x generateAutolinkingPackageList -x generateReactNativeEntryPoint
           
       - name: 📦 Find and rename APK
         run: |
